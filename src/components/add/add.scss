@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  .plus {
+    padding-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  p {
+    font-family: Arial;
+  }
+}
