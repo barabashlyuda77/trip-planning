@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+
+  .plus {
+    padding-right: 10px;
+    width: 31px;
+  }
+}
