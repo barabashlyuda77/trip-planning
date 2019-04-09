@@ -1,0 +1,16 @@
+.home-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
+
+  p {
+    margin: 0;
+    text-transform: uppercase;
+  }
+}

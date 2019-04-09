@@ -1,0 +1,40 @@
+.wrapper-box {
+  padding: 100px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  form {
+    label {
+      display: inline-block;
+      margin: 10px 0 10px 0;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    div {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+
+      input {
+        width: 100px;
+        cursor: pointer;
+      }
+
+      .submit-button {
+        color: white;
+        background: #1E5FB7;
+      }
+
+      .cancel-button {
+        border: none;
+        color: #1E5FB7;
+      }
+    }
+  }
+}
