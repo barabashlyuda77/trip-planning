@@ -24,16 +24,22 @@
       input {
         width: 100px;
         cursor: pointer;
+        outline: none;
       }
 
       .submit-button {
         color: white;
-        background: #1E5FB7;
+        background-color: #170aa9;
+
+        &:hover {
+          background-color: #180689;
+        }
+
       }
 
       .cancel-button {
         border: none;
-        color: #1E5FB7;
+        color: #170aa9;
       }
     }
   }

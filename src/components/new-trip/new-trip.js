@@ -9,7 +9,7 @@ class newTrip extends Component {
     return (
       <div className="trip-wrapper">
         <HomeButton />
-        <TripForm />
+        <TripForm history={this.props.history} />
       </div>
     );
   }

@@ -1,16 +1,25 @@
 .home-wrapper {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
 
-  img {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-  }
+  a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
 
-  p {
-    margin: 0;
-    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    p {
+      margin: 0;
+      text-transform: uppercase;
+      position: relative;
+      top: 3px;
+    }
   }
 }

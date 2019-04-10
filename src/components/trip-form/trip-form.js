@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import './trip-form.scss';
 
 class tripForm extends Component {
+
+  redirectHome = () => {
+    this.props.history.push('/');
+  }
+
+  inputClickHandler = () => {
+    fetch('/add-data-to-db/', {
+      method: 'POST',
+      body: JSON.stringify({
+        country: 'Italy',
+        city: 'Rome',
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log(JSON.stringify(data)))
+  }
+
   render() {
     return (
       <div className="wrapper-box">
@@ -19,11 +36,13 @@ class tripForm extends Component {
           />
           <div>
             <input
+              onClick={this.redirectHome}
               className="cancel-button"
               type="button"
               value="Cancel"
             />
             <input
+              onClick={this.inputClickHandler}
               className="submit-button"
               type="submit"
               value="Add Trip"
