@@ -8,7 +8,7 @@ class tripForm extends Component {
   }
 
   inputClickHandler = () => {
-    fetch('/add-data-to-db/', {
+    fetch('http://localhost:8000/add-data-to-db/', {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({
