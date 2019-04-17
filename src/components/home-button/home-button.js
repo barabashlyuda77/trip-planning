@@ -8,7 +8,10 @@ class homeButton extends Component {
     return (
       <div className="home-wrapper">
         <Link to="/">
-          <img src="https://img.icons8.com/material/24/000000/home-page.png" />
+          <img
+            alt="home button"
+            src="https://img.icons8.com/material/24/000000/home-page.png"
+          />
           <p>Trip planing</p>
         </Link>
       </div>

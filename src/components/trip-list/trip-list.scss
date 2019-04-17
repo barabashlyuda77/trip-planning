@@ -1,0 +1,13 @@
+.tripList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+  }
+}

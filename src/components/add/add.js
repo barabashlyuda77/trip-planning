@@ -9,6 +9,7 @@ class add extends Component {
       <div className="wrapper">
         <Link to="/new-trip/">
           <img
+            alt="add trip"
             src="https://img.icons8.com/material/24/000000/plus-math.png"
             className="plus"
           />

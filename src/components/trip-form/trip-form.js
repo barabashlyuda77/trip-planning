@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import './trip-form.scss';
 
 class tripForm extends Component {
+  state = {
+    country: '',
+    city: ''
+  };
+
+  handlerChangeCountry = (event) => {
+    this.setState({ country: event.target.value})
+  }
+
+  handlerChangeCity = (event) => {
+    this.setState({ city: event.target.value})
+  }
 
   redirectHome = () => {
     this.props.history.push('/');
@@ -12,8 +24,8 @@ class tripForm extends Component {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({
-        country: 'Italy',
-        city: 'Rome'
+        country: this.state.country,
+        city: this.state.city
       })
     });
   }
@@ -25,13 +37,19 @@ class tripForm extends Component {
         <form>
           <label>Destination Country</label>
           <input
+             required="required"
             type="text"
             placeholder="Italy"
+            value={this.state.country}
+            onChange={this.handlerChangeCountry}
           />
           <label>Destination City</label>
           <input
+            required={true}
             type="text"
             placeholder="Rome"
+            value={this.state.city}
+            onChange={this.handlerChangeCity}
           />
           <div>
             <input
