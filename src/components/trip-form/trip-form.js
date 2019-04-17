@@ -9,14 +9,13 @@ class tripForm extends Component {
 
   inputClickHandler = () => {
     fetch('/add-data-to-db/', {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({
         country: 'Italy',
-        city: 'Rome',
+        city: 'Rome'
       })
-    })
-    .then(response => response.json())
-    .then(data => console.log(JSON.stringify(data)))
+    });
   }
 
   render() {
@@ -44,7 +43,7 @@ class tripForm extends Component {
             <input
               onClick={this.inputClickHandler}
               className="submit-button"
-              type="submit"
+              type="button"
               value="Add Trip"
             />
           </div>

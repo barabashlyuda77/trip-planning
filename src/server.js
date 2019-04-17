@@ -1,8 +1,12 @@
 const express = require('express');
-const app = express();
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
 
+const app = express();
+app.use(bodyParser.json());
+
+const db = [];
 
 const getContectFrom = (filePath) => {
   const pathToFile = path.resolve(__dirname, filePath);
@@ -20,5 +24,10 @@ app.get('/manifest.json', (req, res) => {
 });
 
 app.use('/static', express.static(path.resolve(__dirname, '../build/static')));
+
+app.post('/add-data-to-db/', (req, res) => {
+  db.push(req.body);
+  res.sendStatus(200);
+});
 
 app.listen(8000, () => console.log('App is running'));
