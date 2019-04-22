@@ -59,8 +59,10 @@ class tripForm extends Component {
           country: this.state.country,
           city: this.state.city
         })
-      });
+      })
+      .then(() => this.redirectHome())
     }
+
   }
 
   render() {
