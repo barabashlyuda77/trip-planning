@@ -52,17 +52,38 @@ class tripForm extends Component {
     const isCityValid = this.validateCity();
 
     if (isCountryValid && isCityValid) {
-      fetch('http://localhost:8000/add-data-to-db/', {
+      fetch('http://localhost:8000/is-city-exist/', {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         method: 'POST',
         body: JSON.stringify({
-          country: this.state.country,
           city: this.state.city
         })
       })
+      .then(response => response.json())
+      .then(data => {
+        if (data.length > 0) {
+          return Promise.reject('City name is already exist.');
+        }
+      })
+      .catch((err) => {
+        this.setState({
+          cityError: err
+        });
+        return Promise.reject(err);
+      })
+      .then(() => {
+        fetch('http://localhost:8000/add-data-to-db/', {
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          method: 'POST',
+          body: JSON.stringify({
+            country: this.state.country,
+            city: this.state.city
+          })
+        })
+      })
       .then(() => this.redirectHome())
+      .catch((err) => {})
     }
-
   }
 
   render() {
