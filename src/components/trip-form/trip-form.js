@@ -47,18 +47,33 @@ class tripForm extends Component {
     this.props.history.push('/');
   }
 
+  doesCityExist = (city) => {
+    return fetch('http://localhost:8000/is-city-exist/', {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'POST',
+      body: JSON.stringify({
+        city
+      })
+    });
+  }
+
+  addDataToDb = ({ city, country }) => {
+    return fetch('http://localhost:8000/add-data-to-db/', {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'POST',
+      body: JSON.stringify({
+        country,
+        city
+      })
+    });
+  }
+
   handledAdd = () => {
     const isCountryValid = this.validateCountry();
     const isCityValid = this.validateCity();
 
     if (isCountryValid && isCityValid) {
-      fetch('http://localhost:8000/is-city-exist/', {
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        method: 'POST',
-        body: JSON.stringify({
-          city: this.state.city
-        })
-      })
+      this.doesCityExist(this.state.city)
       .then(response => response.json())
       .then(data => {
         if (data.length > 0) {
@@ -71,16 +86,7 @@ class tripForm extends Component {
         });
         return Promise.reject(err);
       })
-      .then(() => {
-        fetch('http://localhost:8000/add-data-to-db/', {
-          headers: { 'Content-Type': 'application/json; charset=utf-8' },
-          method: 'POST',
-          body: JSON.stringify({
-            country: this.state.country,
-            city: this.state.city
-          })
-        })
-      })
+      .then(() => this.addDataToDb(this.state))
       .then(() => this.redirectHome())
       .catch((err) => {})
     }
