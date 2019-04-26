@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
 import './trip-form.scss';
 
 const regex = /^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/;
 
 class tripForm extends Component {
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
   state = {
     country: '',
     city: '',
     countryError: '',
     cityError: ''
   };
+
+  addNotification = () => {
+    this.notificationDOMRef.current.addNotification({
+      message: "New destination added to the list",
+      type: "added",
+      insert: "top",
+      container: "top-right",
+      dismiss: { duration: 2000 },
+    });
+  }
 
   handlerChangeCountry = (event) => {
     this.setState({ country: event.target.value})
@@ -86,8 +104,13 @@ class tripForm extends Component {
         });
         return Promise.reject(err);
       })
-      .then(() => this.addDataToDb(this.state))
-      .then(() => this.redirectHome())
+      .then(() => {
+        this.addDataToDb(this.state);
+        this.addNotification();
+      })
+      .then(() => {
+        setTimeout(() => this.redirectHome(), 2000)
+      })
       .catch((err) => {})
     }
   }
@@ -122,6 +145,12 @@ class tripForm extends Component {
               type="button"
               value="Cancel"
             />
+            <ReactNotification
+              types={[{
+                htmlClasses: ["notification-added"],
+                name: "added"
+              }]}
+              ref={this.notificationDOMRef} />
             <input
               onClick={this.handledAdd}
               className="submit-button"
