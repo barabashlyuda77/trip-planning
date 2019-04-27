@@ -9,7 +9,7 @@ class listWrapper extends Component {
     return (
       <div className="list-wrapper">
         {/* <NothingFound /> */}
-        <TripList />
+        <TripList dataFromDb={this.props.dataFromDb}/>
       </div>
     );
   }
