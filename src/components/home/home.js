@@ -7,7 +7,8 @@ import ListWrapper from '../list-wrapper/list-wrapper.js';
 
 class home extends Component {
   state = {
-    listOfTrips: []
+    listOfTrips: [],
+    dataFromDb: []
   }
 
   componentDidMount() {
@@ -16,13 +17,20 @@ class home extends Component {
       method: 'GET'
     })
     .then(response => response.json())
-    .then(data => this.setState({ listOfTrips: data}))
+    .then(data => this.setState({ listOfTrips: data, dataFromDb: data }))
+  }
+
+  updateListOfTrips = (data) => {
+    this.setState({ listOfTrips: data })
   }
 
   render() {
     return (
       <div className="home">
-        <Search dataFromDb={this.state.listOfTrips}/>
+        <Search
+          dataFromDb={this.state.dataFromDb}
+          updateData={this.updateListOfTrips}
+        />
         <Add />
         <ListWrapper dataFromDb={this.state.listOfTrips}/>
       </div>
