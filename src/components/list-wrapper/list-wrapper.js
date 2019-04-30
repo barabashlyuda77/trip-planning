@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './list-wrapper.scss';
 
-// import NothingFound from '../nothing-found/nothing-found.js';
+import NothingFound from '../nothing-found/nothing-found.js';
 import TripList from '../trip-list/trip-list.js';
 
-class listWrapper extends Component {
-  render() {
-    return (
-      <div className="list-wrapper">
-        {/* <NothingFound /> */}
-        <TripList dataFromDb={this.props.dataFromDb}/>
-      </div>
-    );
-  }
+const listWrapper = (props) => {
+  const listOfTrips = props.listOfTrips;
+
+  return (
+    <div className="list-wrapper">
+      {
+        listOfTrips.length === 0 
+        ? <NothingFound />
+        : <TripList dataFromDb={listOfTrips}/>
+      }
+    </div>
+  );
 }
 
 export default listWrapper;

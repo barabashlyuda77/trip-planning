@@ -32,7 +32,7 @@ class home extends Component {
           updateData={this.updateListOfTrips}
         />
         <Add />
-        <ListWrapper dataFromDb={this.state.listOfTrips}/>
+        <ListWrapper listOfTrips={this.state.listOfTrips}/>
       </div>
     );
   }
