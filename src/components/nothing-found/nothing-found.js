@@ -7,7 +7,7 @@ class nothingFound extends Component {
       <div className="nothingFound">
         <h1>Nothing found</h1>
         <p>Sorry, but nothing planned for this destination</p>
-        <img src="https://img.icons8.com/dotty/80/000000/nothing-found.png" />
+        <img alt="Nothing found" src="https://img.icons8.com/dotty/80/000000/nothing-found.png" />
       </div>
     );
   }

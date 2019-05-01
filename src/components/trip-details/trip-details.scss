@@ -1,0 +1,75 @@
+.component-wrapper {
+  padding: 30px;
+
+  .trip-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 600px;
+
+    .header-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      position: relative;
+
+      h1 {
+        display: inline-block;
+        font-size: 20px;
+        color: #4d4d4d;
+        margin: 0;
+      }
+
+      .img-edit {
+        display: inline-block;
+        height: 15px;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    .details-wrapper {
+      display: flex;
+      justify-content: center;
+
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 200px;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      .box-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-1{
+        .things-to-do {
+          background-color: #beefed;
+        }
+
+        .beaches {
+          background-color: #feaebf;
+        }
+      }
+
+      .section-2 {
+        .food-drink {
+          background-color: #aebeef;
+        }
+
+        .accommodation {
+          background-color: #fedfb3;
+        }
+      }
+    }
+  }
+}
