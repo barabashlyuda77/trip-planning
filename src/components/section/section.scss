@@ -1,0 +1,47 @@
+.component-wrapper {
+  padding: 30px;
+
+  .section-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 600px;
+
+    h1 {
+      display: inline-block;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .form-wrapper {
+      margin: 20px 0;
+
+      form {
+        display: flex;
+
+        input {
+          outline: none;
+        }
+
+        .input-info{
+          display: inline-block;
+          border: 1px solid #ccc;
+        }
+
+        .details {
+          margin: 0 20px;
+        }
+
+        .add-button {
+          cursor: pointer;
+          background-color: #003399;
+          color: white;
+          border-style: none;
+          width: auto;
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+}
