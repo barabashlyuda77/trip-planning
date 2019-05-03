@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from "react-router-dom";
+
 import './trip-details.scss';
 
 import HomeButton from '../home-button/home-button.js';
@@ -34,12 +36,21 @@ class tripDetails extends Component {
           </div>
           <div className="details-wrapper">
             <div className="box-wrapper section-1">
-              <div className="things-to-do box">Things to do</div>
-              <div className="beaches box">Beaches</div>
+              <Link
+                className="things-to-do box" to='/section/'>
+                Things to do
+              </Link>
+              <Link className="beaches box" to='/section/'>
+                Beaches
+              </Link>
             </div>
             <div className="box-wrapper section-2">
-              <div className="food-drink box">Food & Drink</div>
-              <div className="accommodation box">Accommodation</div>
+              <Link className="food-drink box" to='/section/'>
+                Food & Drink
+              </Link>
+              <Link className="accommodation box" to='/section/'>
+                Accommodation
+              </Link>
             </div>
           </div>
         </div>

@@ -36,6 +36,16 @@
       display: flex;
       justify-content: center;
 
+      a {
+        text-decoration: none;
+        color: black;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
       .box {
         display: flex;
         justify-content: center;
