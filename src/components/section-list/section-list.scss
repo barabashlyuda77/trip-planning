@@ -1,0 +1,41 @@
+.section-list-wrapper {
+  width: 750px;
+
+  .item-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted #ccc;
+    position: relative;
+    margin-bottom: 10px;
+
+    .text-wrapper {
+
+      h4, p {
+        margin: 0 0 10px 0;
+      }
+
+      p {
+        width: 690px;
+        height: 50px;
+      }
+    }
+  }
+
+  .img-delete {
+    width: 17px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px dotted #ccc;
+      border-radius: 2px;
+    }
+
+    &:active {
+      background-color: #ccc;
+      border-radius: 2px;
+    }
+  }
+}

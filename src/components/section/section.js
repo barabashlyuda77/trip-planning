@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './section.scss';
 
 import Back from '../back/back.js';
+import SectionList from '../section-list/section-list.js';
 
 class tripDetails extends Component {
   render() {
@@ -29,7 +30,7 @@ class tripDetails extends Component {
               />
             </form>
           </div>
-          <div className="items-wrapper"> List</div>
+          <SectionList />
         </div>
       </div>
     );

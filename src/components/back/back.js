@@ -11,7 +11,7 @@ const back = () =>{
           alt="back button"
           src="https://img.icons8.com/windows/96/000000/back.png"
         />
-        <p>back</p>
+        <p>Back</p>
       </Link>
     </div>
   );
