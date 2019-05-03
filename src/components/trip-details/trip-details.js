@@ -21,6 +21,7 @@ class tripDetails extends Component {
     .then(response => response.json())
     .then(data => this.setState({ country: data.country, city: data.city }))
   }
+  
   render() {
     return (
       <div className="component-wrapper">

@@ -27,19 +27,33 @@
         .input-info{
           display: inline-block;
           border: 1px solid #ccc;
+
+          &:focus {
+            border-color: #8d8d8d;
+          }
+        }
+
+        .name {
+          width: 250px;
         }
 
         .details {
           margin: 0 20px;
+          width: 400px;
+          overflow: auto;
         }
 
         .add-button {
           cursor: pointer;
-          background-color: #003399;
+          background-color: #170aa9;
           color: white;
           border-style: none;
           width: auto;
           padding: 10px 15px;
+
+          &:hover {
+            background-color: #180689;
+          }
         }
       }
     }

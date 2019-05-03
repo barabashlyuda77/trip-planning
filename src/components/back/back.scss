@@ -1,0 +1,20 @@
+.back-wrapper {
+  display: flex;
+
+  a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
+    img {
+      width: 28px;
+      height: auto;
+    }
+
+    p {
+      display: inline-block;
+    }
+  }
+}

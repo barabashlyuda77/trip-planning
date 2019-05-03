@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import './section.scss';
 
-import HomeButton from '../home-button/home-button.js';
+import Back from '../back/back.js';
 
 class tripDetails extends Component {
   render() {
     return (
       <div className="component-wrapper">
-        <HomeButton className="home-button"/>
+        <Back />
         <div className="section-wrapper">
           <h1>Things to do</h1>
           <div className="form-wrapper">
             <form>
               <input
-                className="input-info"
+                className="name input-info"
                 type="text"
                 placeholder="Name"
               />
