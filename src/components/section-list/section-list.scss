@@ -16,7 +16,19 @@
 
       p {
         width: 690px;
-        height: 50px;
+      }
+
+      .read-more, .read-less, .dots {
+        color: #170aa9;
+        font-size: 14px;
+
+        &:hover {
+          color: #369;
+        }
+      }
+
+      .read-more, .read-less {
+        cursor: pointer;
       }
     }
   }
