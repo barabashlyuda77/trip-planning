@@ -37,7 +37,6 @@ class sectionList extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="section-list-wrapper">
         {listOfItems.map((item) => {

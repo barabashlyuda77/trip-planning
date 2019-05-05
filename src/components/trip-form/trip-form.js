@@ -4,7 +4,7 @@ import 'react-notifications-component/dist/theme.css';
 
 import './trip-form.scss';
 
-const regex = /^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/;
+import regex from '../../helpers/regex-input.js';
 
 class tripForm extends Component {
   constructor(props) {

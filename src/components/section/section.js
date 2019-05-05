@@ -1,13 +1,37 @@
 import React, {Component} from 'react';
 import './section.scss';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
+import regex from '../../helpers/regex-input.js';
 
 import Back from '../back/back.js';
 import SectionList from '../section-list/section-list.js';
 
+const db = [];
+console.log(db);
+
 class tripDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
   state = {
     name: '',
-    details: ''
+    details: '',
+    inputNameError: '',
+    inputDetailsError: ''
+  }
+
+  addNotification = () => {
+    this.notificationDOMRef.current.addNotification({
+      message: "Added to the list",
+      type: "added",
+      insert: "top",
+      container: "top-right",
+      dismiss: { duration: 2000 },
+    });
   }
 
   handerChangeName = (event) => {
@@ -18,20 +42,44 @@ class tripDetails extends Component {
     this.setState({ details: event.target.value})
   }
 
-  // addDataToDb = ({ name, details }) => {
-  //   return fetch('http://localhost:8000/add-section-details-to-db/', {
-  //     headers: { 'Content-Type': 'application/json; charset=utf-8' },
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name,
-  //       details
-  //     })
-  //   });
-  // }
+  validateNameInput = () => {
+    const { name } = this.state;
+    const isInputValid = regex.test(name);
+
+    this.setState({
+      inputNameError:
+      isInputValid ? null : 'Input is not valid'
+    });
+
+    return isInputValid;
+  }
+
+  validateDetailsInput = () => {
+    const { details } = this.state;
+    const isInputValid = regex.test(details);
+
+    this.setState({
+      inputDetailsError:
+      isInputValid ? null : 'Input is not valid'
+    });
+
+    return isInputValid;
+  }
+
+  addDataToDb = ({ name, details }) => {
+    db.push({ name, details })
+  }
 
   handledAdd = () => {
-    // this.addDataToDb(this.state)
-    console.log('add', this.state);
+    const isInpuValid = this.validateNameInput(this.state.name)
+      && this.validateDetailsInput(this.state.details);
+
+    if (!isInpuValid) {
+      console.log('error');
+      return
+    }
+    this.addDataToDb(this.state)
+    this.addNotification()
   }
 
   render() {
@@ -42,20 +90,32 @@ class tripDetails extends Component {
           <h1>Things to do</h1>
           <div className="form-wrapper">
             <form>
-              <input
-                className="name input-info"
-                type="text"
-                placeholder="Name"
-                value={this.state.name}
-                onChange={this.handerChangeName}
-              />
-              <input
-                className="details input-info"
-                type="text"
-                placeholder="Details..."
-                value={this.state.details}
-                onChange={this.handerChangeDetails}
-              />
+              <div className="input-wrapper">
+                <input
+                  className={`name input-info ${this.state.inputNameError ? 'is-invalid' : ''}`}
+                  type="text"
+                  placeholder="Name"
+                  value={this.state.name}
+                  onChange={this.handerChangeName}
+                />
+                <div className='invalid-feedback'>{this.state.inputNameError}</div>
+              </div>
+              <div className="input-wrapper">
+                <input
+                  className={`details input-info ${this.state.inputDetailsError ? 'is-invalid' : ''}`}
+                  type="text"
+                  placeholder="Details..."
+                  value={this.state.details}
+                  onChange={this.handerChangeDetails}
+                />
+                <div className='invalid-feedback'>{this.state.inputDetailsError}</div>
+              </div>
+              <ReactNotification
+                types={[{
+                  htmlClasses: ["notification-added"],
+                  name: "added"
+                }]}
+                ref={this.notificationDOMRef} />
               <input
                 className="add-button"
                 type="button"
