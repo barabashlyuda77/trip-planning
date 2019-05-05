@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './home.scss';
+import './home-page.scss';
 
-import Search from '../search/search.js';
-import Add from '../add/add.js';
-import ListWrapper from '../list-wrapper/list-wrapper.js';
+import Search from '../../components/search/search.js';
+import Add from '../../components/add/add.js';
+import ListWrapper from '../../components/list-wrapper/list-wrapper.js';
 
 class home extends Component {
   state = {

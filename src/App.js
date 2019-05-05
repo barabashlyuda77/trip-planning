@@ -3,20 +3,22 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import './App.scss';
 
-import Home from './components/home/home.js';
-import NewTrip from './components/new-trip/new-trip.js';
-import TripDetails from './components/trip-details/trip-details.js';
-import Section from './components/section/section.js';
+import HomePage from './pages/home-page/home-page.js';
+import NewTripPage from './pages/new-trip-page/new-trip-page.js';
+import TripDetailsPage from './pages/trip-details-page/trip-details-page.js';
+import SectionPage from './pages/section-page/section-page.js';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-          <Route path="/" exact component={Home} />
-          <Route path="/new-trip/" component={NewTrip} />
-          <Route path="/trip-details/:id/" component={TripDetails} />
-          <Route path="/section/" component={Section} />
+          <Route path="/" exact component={HomePage} />
+          <Route path="/new-trip/" component={NewTripPage} />
+          <Route path="/trip-details/:id/" component={TripDetailsPage} />
+          <Route path="/things-to-do/:id/"
+                 render={(props) => <SectionPage type="things_to_do" {...props} />}
+          />
         </div>
       </BrowserRouter>
     );

@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
 
-import './trip-details.scss';
+import './trip-details-page.scss';
 
-import HomeButton from '../home-button/home-button.js';
+import HomeButton from '../../components/home-button/home-button.js';
 
 class tripDetails extends Component {
   state = {
     country: '',
     city: ''
   }
+
   componentDidMount() {
     fetch('http://localhost:8000/get-country-city-by-id/', {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -21,7 +22,7 @@ class tripDetails extends Component {
     .then(response => response.json())
     .then(data => this.setState({ country: data.country, city: data.city }))
   }
-  
+
   render() {
     return (
       <div className="component-wrapper">
@@ -38,7 +39,8 @@ class tripDetails extends Component {
           <div className="details-wrapper">
             <div className="box-wrapper section-1">
               <Link
-                className="things-to-do box" to='/section/'>
+                className="things-to-do box"
+                to={`/things-to-do/${this.props.match.params.id}/`}>
                 Things to do
               </Link>
               <Link className="beaches box" to='/section/'>

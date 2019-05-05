@@ -1,18 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
 import './back.scss';
 
-const back = () =>{
+const back = (props) =>{
   return (
     <div className="back-wrapper">
-      <Link to="/trip-details/:id/">
+      <a href="#" onClick={props.goBack}>
         <img
           alt="back button"
           src="https://img.icons8.com/windows/96/000000/back.png"
         />
         <p>Back</p>
-      </Link>
+      </a>
     </div>
   );
 }

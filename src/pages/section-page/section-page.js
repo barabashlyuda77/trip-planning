@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './section.scss';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 
+import './section-page.scss';
 import regex from '../../helpers/regex-input.js';
 
-import Back from '../back/back.js';
-import SectionList from '../section-list/section-list.js';
+import Back from '../../components/back/back.js';
+import SectionList from '../../components/section-list/section-list.js';
 
 const db = [];
 console.log(db);
@@ -14,6 +14,7 @@ console.log(db);
 class tripDetails extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.notificationDOMRef = React.createRef();
   }
 
@@ -71,10 +72,10 @@ class tripDetails extends Component {
   }
 
   handledAdd = () => {
-    const isInpuValid = this.validateNameInput(this.state.name)
-      && this.validateDetailsInput(this.state.details);
+    const isNameInputValid = this.validateNameInput(this.state.name)
+    const isDetailsInputValid = this.validateDetailsInput(this.state.details);
 
-    if (!isInpuValid) {
+    if (!(isNameInputValid && isDetailsInputValid)) {
       console.log('error');
       return
     }
@@ -85,7 +86,7 @@ class tripDetails extends Component {
   render() {
     return (
       <div className="component-wrapper">
-        <Back />
+        <Back goBack={this.props.history.goBack} />
         <div className="section-wrapper">
           <h1>Things to do</h1>
           <div className="form-wrapper">
