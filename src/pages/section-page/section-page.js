@@ -141,7 +141,10 @@ class tripDetails extends Component {
               />
             </form>
           </div>
-          <SectionList />
+          <SectionList
+            tripId={this.props.match.params.id}
+            tableName={this.props.type}
+          />
         </div>
       </div>
     );

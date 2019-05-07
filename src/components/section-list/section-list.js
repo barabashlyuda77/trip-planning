@@ -1,27 +1,31 @@
 import React, {Component} from 'react';
 import './section-list.scss';
 
-const listOfItems = [
-  {
-    name: 'Big Budda',
-    details: 'Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day.'
-  },
-  {
-    name: 'Big Budda2',
-    details: 'Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day. Open every day.'
-  }
-]
-
 class sectionList extends Component {
-  constructor(props) {
-    super(props);
-    const readMoreState = {};
-    listOfItems.forEach((key) => {
-      readMoreState[key.name] = 'close';
-    });
-    this.state = {
-      readMoreState
-    }
+  // constructor(props) {
+  //   super(props);
+  //   const readMoreState = {};
+  //   listOfItems.forEach((key) => {
+  //     readMoreState[key.name] = 'close';
+  //   });
+  //   this.
+  // }
+  state = {
+    readMoreState: {},
+    listOfItems: []
+  }
+
+  componentDidMount() {
+    const tableType = this.props.tableName.split('_').join('-');
+
+    fetch(
+      `http://localhost:8000/get-${tableType}-name-details/${this.props.tripId}/`,
+      {
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        method: 'GET'
+      })
+    .then(response => response.json())
+    .then(data => this.setState({ listOfItems: data }))
   }
 
   headnlerReadMore = (key) => {
@@ -39,35 +43,37 @@ class sectionList extends Component {
   render() {
     return (
       <div className="section-list-wrapper">
-        {listOfItems.map((item) => {
-          const maxLengthOfText = 80;
-          const detailsPart1 = item.details.substring(0, maxLengthOfText);
-          const detailsPart2 = item.details.substring(maxLengthOfText);
+        {this.state.listOfItems.length === 0
+          ? null
+          : this.state.listOfItems.map((item) => {
+            const maxLengthOfText = 80;
+            const detailsPart1 = item.details.substring(0, maxLengthOfText);
+            const detailsPart2 = item.details.substring(maxLengthOfText);
 
-          return <div className="item-wrapper" key={item.name}>
-            <div className="text-wrapper">
-              <h4>{item.name}</h4>
-              <p>
-                <span className="details-part1">{detailsPart1}</span>
-                {
-                  this.state.readMoreState[item.name] === 'open'
-                  ? null
-                  : <span>
-                      <span className="dots">... </span>
-                      <span className="read-more" onClick={() => this.headnlerReadMore(item.name)}>
-                        read more
+            return <div className="item-wrapper" key={item.name}>
+              <div className="text-wrapper">
+                <h4>{item.name}</h4>
+                <p>
+                  <span className="details-part1">{detailsPart1}</span>
+                  {
+                    this.state.readMoreState[item.name] === 'open'
+                    ? null
+                    : <span>
+                        <span className="dots">... </span>
+                        <span className="read-more" onClick={() => this.headnlerReadMore(item.name)}>
+                          read more
+                        </span>
                       </span>
-                    </span>
-                }
-                {
-                  this.state.readMoreState[item.name] === 'close'
-                  ? null
-                  : <span>
-                      <span className="details-part2">{detailsPart2}</span>
-                      <span className="read-less" onClick={() => this.headnlerReadLess(item.name)}>
-                        read less
+                  }
+                  {
+                    this.state.readMoreState[item.name] === 'close'
+                    ? null
+                    : <span>
+                        <span className="details-part2">{detailsPart2}</span>
+                        <span className="read-less" onClick={() => this.headnlerReadLess(item.name)}>
+                          read less
+                        </span>
                       </span>
-                    </span>
                 }
 
               </p>
