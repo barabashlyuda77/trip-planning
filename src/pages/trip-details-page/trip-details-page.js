@@ -43,15 +43,21 @@ class tripDetails extends Component {
                 to={`/things-to-do/${this.props.match.params.id}/`}>
                 Things to do
               </Link>
-              <Link className="beaches box" to='/section/'>
+              <Link
+                className="beaches box"
+                to={`/beaches/${this.props.match.params.id}/`}>
                 Beaches
               </Link>
             </div>
             <div className="box-wrapper section-2">
-              <Link className="food-drink box" to='/section/'>
+              <Link
+                className="food-drink box"
+                to={`/food-drink/${this.props.match.params.id}/`}>
                 Food & Drink
               </Link>
-              <Link className="accommodation box" to='/section/'>
+              <Link
+                className="accommodation box"
+                to={`/accommodation/${this.props.match.params.id}/`}>
                 Accommodation
               </Link>
             </div>

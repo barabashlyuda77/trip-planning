@@ -19,6 +19,15 @@ class App extends Component {
           <Route path="/things-to-do/:id/"
                  render={(props) => <SectionPage type="things_to_do" {...props} />}
           />
+          <Route path="/food-drink/:id/"
+                 render={(props) => <SectionPage type="food_drink" {...props} />}
+          />
+          <Route path="/beaches/:id/"
+                 render={(props) => <SectionPage type="beaches" {...props} />}
+          />
+          <Route path="/accommodation/:id/"
+                 render={(props) => <SectionPage type="accommodation" {...props} />}
+          />
         </div>
       </BrowserRouter>
     );

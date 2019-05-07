@@ -8,9 +8,6 @@ import regex from '../../helpers/regex-input.js';
 import Back from '../../components/back/back.js';
 import SectionList from '../../components/section-list/section-list.js';
 
-const db = [];
-console.log(db);
-
 class tripDetails extends Component {
   constructor(props) {
     super(props);
@@ -68,7 +65,16 @@ class tripDetails extends Component {
   }
 
   addDataToDb = ({ name, details }) => {
-    db.push({ name, details })
+    return fetch('http://localhost:8000/add-section-details-to-db/', {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        details,
+        id: this.props.match.params.id,
+        type: this.props.type
+      })
+    });
   }
 
   handledAdd = () => {
@@ -83,12 +89,22 @@ class tripDetails extends Component {
     this.addNotification()
   }
 
+  getSectionTitle = (name) => {
+    const sectionTitles = {
+      things_to_do: 'Things to do',
+      food_drink: 'Food & Drink',
+      beaches: 'Beaches',
+      accommodation: 'Accommodation'
+    };
+    return sectionTitles[name];
+  }
+
   render() {
     return (
       <div className="component-wrapper">
         <Back goBack={this.props.history.goBack} />
         <div className="section-wrapper">
-          <h1>Things to do</h1>
+          <h1>{this.getSectionTitle(this.props.type)}</h1>
           <div className="form-wrapper">
             <form>
               <div className="input-wrapper">
