@@ -2,14 +2,6 @@ import React, {Component} from 'react';
 import './section-list.scss';
 
 class sectionList extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   const readMoreState = {};
-  //   listOfItems.forEach((key) => {
-  //     readMoreState[key.name] = 'close';
-  //   });
-  //   this.
-  // }
   state = {
     readMoreState: {},
     listOfItems: []
@@ -25,7 +17,15 @@ class sectionList extends Component {
         method: 'GET'
       })
     .then(response => response.json())
-    .then(data => this.setState({ listOfItems: data }))
+    .then(data => {
+      let newStateReadMore = {};
+      if (Object.keys(data).length > 0) {
+        data.forEach((key) => {
+          newStateReadMore[key.name] = 'close';
+        });
+      }
+
+      this.setState({ listOfItems: data, readMoreState: newStateReadMore })})
   }
 
   headnlerReadMore = (key) => {
@@ -46,7 +46,22 @@ class sectionList extends Component {
         {this.state.listOfItems.length === 0
           ? null
           : this.state.listOfItems.map((item) => {
-            const maxLengthOfText = 80;
+            const maxLengthOfText = 87;
+
+            if (item.details.length < maxLengthOfText) {
+              return <div className="item-wrapper" key={item.name}>
+                <div className="text-wrapper">
+                  <h4>{item.name}</h4>
+                  <p>{item.name}</p>
+                </div>
+                <img
+                  className="img-delete"
+                  alt="delete"
+                  src="https://img.icons8.com/small/32/000000/delete-sign.png"
+                />
+              </div>
+            }
+
             const detailsPart1 = item.details.substring(0, maxLengthOfText);
             const detailsPart2 = item.details.substring(maxLengthOfText);
 
@@ -69,7 +84,7 @@ class sectionList extends Component {
                     this.state.readMoreState[item.name] === 'close'
                     ? null
                     : <span>
-                        <span className="details-part2">{detailsPart2}</span>
+                        <span className="details-part2">{detailsPart2} </span>
                         <span className="read-less" onClick={() => this.headnlerReadLess(item.name)}>
                           read less
                         </span>
