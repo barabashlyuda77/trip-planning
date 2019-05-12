@@ -46,7 +46,7 @@ class tripDetails extends Component {
 
     this.setState({
       inputNameError:
-      isInputValid ? null : 'Input is not valid'
+      isInputValid ? null : 'Name is not valid'
     });
 
     return isInputValid;
@@ -54,11 +54,11 @@ class tripDetails extends Component {
 
   validateDetailsInput = () => {
     const { details } = this.state;
-    const isInputValid = regex.test(details);
+    const isInputValid = /^\S.*$/.test(details);
 
     this.setState({
       inputDetailsError:
-      isInputValid ? null : 'Input is not valid'
+      isInputValid ? null : 'Details field cannot be empty'
     });
 
     return isInputValid;
