@@ -11,7 +11,6 @@ import SectionList from '../../components/section-list/section-list.js';
 class tripDetails extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.notificationDOMRef = React.createRef();
   }
 
@@ -85,8 +84,15 @@ class tripDetails extends Component {
       console.log('error');
       return
     }
-    this.addDataToDb(this.state)
-    this.addNotification()
+
+    this.addDataToDb(this.state);
+    this.addNotification();
+    this.setState({
+      name: '',
+      details: '',
+      inputNameError: '',
+      inputDetailsError: ''
+    });
   }
 
   getSectionTitle = (name) => {
