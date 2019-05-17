@@ -91,6 +91,18 @@ class sectionList extends Component {
     </div>
   }
 
+  deteteFromDb = (id) => {
+    const tableType = this.props.tableName.split('_').join('-');
+
+    fetch(`http://localhost:8000/delete-item-from-${tableType}`, {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'DELETE',
+      body: JSON.stringify({
+        id
+      })
+    });
+  }
+
   render() {
     return (
       <div className="section-list-wrapper">
@@ -106,6 +118,7 @@ class sectionList extends Component {
                 className="img-delete"
                 alt="delete"
                 src="https://img.icons8.com/small/32/000000/delete-sign.png"
+                onClick={() => this.deteteFromDb(item.id)}
               />
             </div>
         })}
