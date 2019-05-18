@@ -26,7 +26,7 @@ class tripDetails extends Component {
     const tableType = this.props.type.split('_').join('-');
 
     fetch(
-      `http://localhost:8000/get-${tableType}-name-details/${this.props.match.params.id}/`,
+        `http://localhost:8000/get-name-details/${this.props.type}/${this.props.match.params.id}/`,
       {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         method: 'GET'

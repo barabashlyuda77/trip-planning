@@ -65,13 +65,12 @@ class sectionList extends Component {
   }
 
   deteteFromDb = (id) => {
-    const tableType = this.props.tableName.split('_').join('-');
-
-    return fetch(`http://localhost:8000/delete-item-from-${tableType}`, {
+    return fetch(`http://localhost:8000/delete-item`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'DELETE',
       body: JSON.stringify({
-        id
+        id,
+        tableName: this.props.tableName
       })
     })
     .then(response => response.json());
