@@ -6,17 +6,6 @@ class sectionList extends Component {
     readMoreState: {}
   }
 
-  componentDidMount() {
-    let newStateReadMore = {};
-        if (Object.keys(this.props.listOfItems).length > 0) {
-          this.props.listOfItems.forEach((key) => {
-            newStateReadMore[key.name] = 'close';
-          });
-        }
-
-        this.setState({ readMoreState: newStateReadMore })
-  }
-
   headnlerReadMore = (key) => {
     const newState = this.state;
     newState.readMoreState[key] = 'open';
@@ -55,11 +44,16 @@ class sectionList extends Component {
     const detailsPart1 = details.substring(0, maxLengthOfText);
     const detailsPart2 = details.substring(maxLengthOfText);
 
-    return <div>
+    return <>
         <span className="details-part1">{detailsPart1}</span>
         {
           this.state.readMoreState[name] === 'open'
-          ? null
+          ? <span>
+              <span className="details-part2">{detailsPart2} </span>
+              <span className="read-less" onClick={() => this.headnlerReadLess(name)}>
+                read less
+              </span>
+            </span>
           : <span>
               <span className="dots">... </span>
               <span className="read-more" onClick={() => this.headnlerReadMore(name)}>
@@ -67,17 +61,7 @@ class sectionList extends Component {
               </span>
             </span>
         }
-        {
-          this.state.readMoreState[name] === 'close'
-          ? null
-          : <span>
-              <span className="details-part2">{detailsPart2} </span>
-              <span className="read-less" onClick={() => this.headnlerReadLess(name)}>
-                read less
-              </span>
-            </span>
-      }
-    </div>
+    </>
   }
 
   deteteFromDb = (id) => {
