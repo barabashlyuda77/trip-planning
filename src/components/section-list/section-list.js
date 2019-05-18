@@ -3,29 +3,18 @@ import './section-list.scss';
 
 class sectionList extends Component {
   state = {
-    readMoreState: {},
-    listOfItems: []
+    readMoreState: {}
   }
 
   componentDidMount() {
-    const tableType = this.props.tableName.split('_').join('-');
+    let newStateReadMore = {};
+        if (Object.keys(this.props.listOfItems).length > 0) {
+          this.props.listOfItems.forEach((key) => {
+            newStateReadMore[key.name] = 'close';
+          });
+        }
 
-    fetch(
-      `http://localhost:8000/get-${tableType}-name-details/${this.props.tripId}/`,
-      {
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        method: 'GET'
-      })
-    .then(response => response.json())
-    .then(data => {
-      let newStateReadMore = {};
-      if (Object.keys(data).length > 0) {
-        data.forEach((key) => {
-          newStateReadMore[key.name] = 'close';
-        });
-      }
-
-      this.setState({ listOfItems: data, readMoreState: newStateReadMore })})
+        this.setState({ readMoreState: newStateReadMore })
   }
 
   headnlerReadMore = (key) => {
@@ -106,9 +95,9 @@ class sectionList extends Component {
   render() {
     return (
       <div className="section-list-wrapper">
-        {this.state.listOfItems.length === 0
+        {this.props.listOfItems.length === 0
           ? null
-          : this.state.listOfItems.map((item) => {
+          : this.props.listOfItems.map((item) => {
             return <div className="item-wrapper" key={item.name}>
               <div className="text-wrapper">
                 <h4>{item.name}</h4>

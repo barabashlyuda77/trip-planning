@@ -18,7 +18,21 @@ class tripDetails extends Component {
     name: '',
     details: '',
     inputNameError: '',
-    inputDetailsError: ''
+    inputDetailsError: '',
+    listOfItems: []
+  }
+
+  componentDidMount() {
+    const tableType = this.props.type.split('_').join('-');
+
+    fetch(
+      `http://localhost:8000/get-${tableType}-name-details/${this.props.match.params.id}/`,
+      {
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        method: 'GET'
+      })
+    .then(response => response.json())
+    .then(data => this.setState({ listOfItems: data }))
   }
 
   addNotification = () => {
@@ -73,7 +87,9 @@ class tripDetails extends Component {
         id: this.props.match.params.id,
         type: this.props.type
       })
-    });
+    })
+    .then(response => response.json())
+    .then(data => this.setState({ listOfItems: data }))
   }
 
   handledAdd = () => {
@@ -148,7 +164,7 @@ class tripDetails extends Component {
             </form>
           </div>
           <SectionList
-            tripId={this.props.match.params.id}
+            listOfItems={this.state.listOfItems}
             tableName={this.props.type}
           />
         </div>
