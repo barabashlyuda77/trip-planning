@@ -121,6 +121,8 @@ class tripDetails extends Component {
     return sectionTitles[name];
   }
 
+  updateListOfItems = (data) => this.setState({ listOfItems: data });
+
   render() {
     return (
       <div className="component-wrapper">
@@ -165,6 +167,7 @@ class tripDetails extends Component {
           </div>
           <SectionList
             listOfItems={this.state.listOfItems}
+            updateListOfItems={this.updateListOfItems}
             tableName={this.props.type}
           />
         </div>

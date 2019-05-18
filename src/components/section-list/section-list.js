@@ -67,13 +67,19 @@ class sectionList extends Component {
   deteteFromDb = (id) => {
     const tableType = this.props.tableName.split('_').join('-');
 
-    fetch(`http://localhost:8000/delete-item-from-${tableType}`, {
+    return fetch(`http://localhost:8000/delete-item-from-${tableType}`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'DELETE',
       body: JSON.stringify({
         id
       })
-    });
+    })
+    .then(response => response.json());
+  }
+
+  clickHandler = (id) => {
+    this.deteteFromDb(id)
+    .then((data)=> this.props.updateListOfItems(data))
   }
 
   render() {
@@ -91,7 +97,7 @@ class sectionList extends Component {
                 className="img-delete"
                 alt="delete"
                 src="https://img.icons8.com/small/32/000000/delete-sign.png"
-                onClick={() => this.deteteFromDb(item.id)}
+                onClick={() => this.clickHandler(item.id)}
               />
             </div>
         })}
