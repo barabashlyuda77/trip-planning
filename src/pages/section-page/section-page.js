@@ -23,8 +23,6 @@ class tripDetails extends Component {
   }
 
   componentDidMount() {
-    const tableType = this.props.type.split('_').join('-');
-
     fetch(
         `http://localhost:8000/get-name-details/${this.props.type}/${this.props.match.params.id}/`,
       {

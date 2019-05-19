@@ -30,11 +30,13 @@ class tripDetails extends Component {
         <div className="trip-details">
           <div className="header-wrapper">
             <h1>{this.state.city}, {this.state.country}</h1>
-            <img
-              className="img-edit"
-              alt="edit"
-              src="https://img.icons8.com/small/16/000000/edit.png"
-            />
+            <Link to={`/edit-trip-details/${this.props.match.params.id}/`}>
+              <img
+                className="img-edit"
+                alt="edit"
+                src="https://img.icons8.com/small/16/000000/edit.png"
+              />
+            </Link>
           </div>
           <div className="details-wrapper">
             <div className="box-wrapper section-1">
