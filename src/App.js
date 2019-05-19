@@ -7,7 +7,6 @@ import HomePage from './pages/home-page/home-page.js';
 import NewTripPage from './pages/new-trip-page/new-trip-page.js';
 import TripDetailsPage from './pages/trip-details-page/trip-details-page.js';
 import SectionPage from './pages/section-page/section-page.js';
-import EditTripPage from './pages/edit-trip-page/edit-trip-page.js';
 
 class App extends Component {
   render() {
@@ -29,7 +28,6 @@ class App extends Component {
           <Route path="/accommodation/:id/"
                  render={(props) => <SectionPage type="accommodation" {...props} />}
           />
-          <Route path="/edit-trip-details/:id/" component={EditTripPage} />
         </div>
       </BrowserRouter>
     );

@@ -23,6 +23,26 @@ class tripDetails extends Component {
     .then(data => this.setState({ country: data.country, city: data.city }))
   }
 
+  redirectHome = () => {
+    this.props.history.push('/');
+  }
+
+  deleteTrip = () => {
+    return fetch('http://localhost:8000/delete-trip/', {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'DELETE',
+      body: JSON.stringify({
+        tripId: parseInt(this.props.match.params.id)
+      })
+    })
+  }
+
+  imageClickHandler = () => {
+    if (window.confirm('Are you sure you want to delete this trip?')){
+      this.deleteTrip()
+      .then(()=> this.redirectHome());
+    }
+  }
   render() {
     return (
       <div className="component-wrapper">
@@ -30,13 +50,12 @@ class tripDetails extends Component {
         <div className="trip-details">
           <div className="header-wrapper">
             <h1>{this.state.city}, {this.state.country}</h1>
-            <Link to={`/edit-trip-details/${this.props.match.params.id}/`}>
-              <img
-                className="img-edit"
-                alt="edit"
-                src="https://img.icons8.com/small/16/000000/edit.png"
-              />
-            </Link>
+            <img
+              className="img-delete"
+              alt="delete"
+              src="https://img.icons8.com/small/16/000000/trash.png"
+              onClick={this.imageClickHandler}
+            />
           </div>
           <div className="details-wrapper">
             <div className="box-wrapper section-1">
