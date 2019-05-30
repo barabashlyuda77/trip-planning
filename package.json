@@ -10,12 +10,12 @@
     "react-dom": "^16.8.5",
     "react-notifications-component": "^1.1.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "NODE_ENV=test mocha --require @babel/register --require ignore-styles src/test/*.test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,6 +28,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "babel-preset-react-app-babel-7": "^4.0.2-0",
+    "chai": "^4.2.0",
+    "chai-enzyme": "^1.0.0-beta.1",
+    "cheerio": "^1.0.0-rc.3",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.11"
   }
 }
