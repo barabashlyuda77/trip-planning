@@ -2,7 +2,7 @@ import React from 'react';
 
 import './back.scss';
 
-const back = (props) =>{
+const Back = (props) =>{
   return (
     <div className="back-wrapper">
       <a href="#" onClick={props.goBack}>
@@ -16,4 +16,4 @@ const back = (props) =>{
   );
 }
 
-export default back;
+export default Back;
