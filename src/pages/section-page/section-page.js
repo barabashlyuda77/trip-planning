@@ -8,6 +8,8 @@ import regex from '../../helpers/regex-input.js';
 import Back from '../../components/back/back.js';
 import SectionList from '../../components/section-list/section-list.js';
 
+import config from '../../config/config.json';
+
 class tripDetails extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ class tripDetails extends Component {
 
   componentDidMount() {
     fetch(
-        `http://localhost:8000/get-name-details/${this.props.type}/${this.props.match.params.id}/`,
+        `${config.backend_url}/get-name-details/${this.props.type}/${this.props.match.params.id}/`,
       {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         method: 'GET'
@@ -76,7 +78,7 @@ class tripDetails extends Component {
   }
 
   addDataToDb = ({ name, details }) => {
-    return fetch('http://localhost:8000/add-section-details-to-db/', {
+    return fetch(`${config.backend_url}/add-section-details-to-db/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({

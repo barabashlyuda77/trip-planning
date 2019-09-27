@@ -5,6 +5,7 @@ import 'react-notifications-component/dist/theme.css';
 import './trip-form.scss';
 
 import regex from '../../helpers/regex-input.js';
+import config from '../../config/config.json';
 
 class tripForm extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class tripForm extends Component {
   }
 
   doesCityExist = (city) => {
-    return fetch('http://localhost:8000/is-city-exist/', {
+    return fetch(`${config.backend_url}/is-city-exist/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({
@@ -76,7 +77,7 @@ class tripForm extends Component {
   }
 
   addDataToDb = ({ city, country }) => {
-    return fetch('http://localhost:8000/add-data-to-db/', {
+    return fetch(`${config.backend_url}/add-data-to-db/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({

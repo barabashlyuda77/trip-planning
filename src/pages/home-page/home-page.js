@@ -5,6 +5,8 @@ import Search from '../../components/search/search.js';
 import Add from '../../components/add/add.js';
 import ListWrapper from '../../components/list-wrapper/list-wrapper.js';
 
+import config from '../../config/config.json';
+
 class home extends Component {
   state = {
     listOfTrips: [],
@@ -12,7 +14,7 @@ class home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/get-country-city/', {
+    fetch(`${config.backend_url}/get-country-city/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'GET'
     })

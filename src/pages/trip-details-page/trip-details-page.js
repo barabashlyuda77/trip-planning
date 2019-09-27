@@ -5,6 +5,8 @@ import './trip-details-page.scss';
 
 import HomeButton from '../../components/home-button/home-button.js';
 
+import config from '../../config/config.json';
+
 class tripDetails extends Component {
   state = {
     country: '',
@@ -12,7 +14,7 @@ class tripDetails extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/get-country-city-by-id/', {
+    fetch(`${config.backend_url}/get-country-city-by-id/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({
@@ -28,7 +30,7 @@ class tripDetails extends Component {
   }
 
   deleteTrip = () => {
-    return fetch('http://localhost:8000/delete-trip/', {
+    return fetch(`${config.backend_url}/delete-trip/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'DELETE',
       body: JSON.stringify({

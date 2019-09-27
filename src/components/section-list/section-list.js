@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './section-list.scss';
 
+import config from '../../config/config.json';
+
 class sectionList extends Component {
   state = {
     readMoreState: {}
@@ -65,7 +67,7 @@ class sectionList extends Component {
   }
 
   deteteFromDb = (id) => {
-    return fetch(`http://localhost:8000/delete-item`, {
+    return fetch(`${config.backend_url}/delete-item`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'DELETE',
       body: JSON.stringify({
