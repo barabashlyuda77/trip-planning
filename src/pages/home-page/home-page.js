@@ -5,7 +5,7 @@ import Search from '../../components/search/search.js';
 import Add from '../../components/add/add.js';
 import ListWrapper from '../../components/list-wrapper/list-wrapper.js';
 
-import config from '../../config/config.json';
+import getConfig from '../../helpers/config.js';
 
 class home extends Component {
   state = {
@@ -14,7 +14,7 @@ class home extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.backend_url}/get-country-city/`, {
+    fetch(`${getConfig().backend_url}/get-country-city/`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'GET'
     })
