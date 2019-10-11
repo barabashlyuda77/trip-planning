@@ -2,3 +2,11 @@
   box-sizing: border-box;
   font-family: Arial;
 }
+
+html, body {
+  height: 100%;
+}
+
+#root, #root > div {
+  height: 100%;
+}
