@@ -1,80 +1,77 @@
+@import '../../variables.scss';
+@import '../../_mixins.scss';
+
 .component-wrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
+  @include display-flex-column;
+  padding: 3rem;
   height: 100%;
 
   .trip-details {
-    display: flex;
-    flex-direction: column;
+    @include display-flex-column;
     align-items: center;
     flex-grow: 1;
 
-    @media (min-width: 1024px) {
-      flex-grow: 1;
-      margin: 20px auto;
-      width: 600px;
+    @media (min-width: $minWidthDesktop) {
+      margin: 2rem auto;
+      width: 60rem;
       flex-grow: 0;
     }
 
     .header-wrapper {
+      @include display-flex-center;
+      margin: 1.5rem 0;
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 15px 0;
       position: relative;
 
-      @media (min-width: 1024px) {
-        margin: 0 0 30px 0;
+      @media (min-width: $minWidthDesktop) {
+        margin: 0 0 3rem 0;
       }
 
       h1 {
         display: inline-block;
-        font-size: 20px;
-        color: #4d4d4d;
+        font-size: 2rem;
+        color: $headerColor;
         margin: 0;
       }
 
       .img-delete {
         display: inline-block;
-        height: 20px;
-        cursor: pointer;
+        height: 2rem;
         position: absolute;
         right: 0;
+        cursor: pointer;
 
-        @media (min-width: 1024px) {
-          height: 15px;
+        @media (min-width: $minWidthDesktop) {
+          height: 1.5rem;
         }
 
         &:hover {
-          border: 1px dotted #ccc;
-          border-radius: 2px;
+          border: 0.1rem dotted $borderColor;
+          border-radius: $borderRadiusTwo;
         }
 
         &:active {
-          background-color: #ccc;
-          border-radius: 2px;
+          background-color: $borderColor;
+          border-radius: $borderRadiusTwo;
         }
       }
     }
 
     .details-wrapper {
-      display: flex;
-      flex-direction: column;
+      @include display-flex-column;
       flex-grow: 1;
       width: 100%;
 
-      @media (min-width: 1024px) {
+      @media (min-width: $minWidthDesktop) {
         flex-direction: row;
-        width: auto;
         flex-grow: 0;
+        width: auto;
       }
 
       a {
-        text-decoration: none;
-        color: black;
         display: inline-block;
+        text-decoration: none;
+        color: $textColor;
 
         &:hover {
           text-decoration: underline;
@@ -82,48 +79,46 @@
       }
 
       .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include display-flex-center;
         flex-grow: 1;
         width: 100%;
-        border-radius: 2px;
+        border-radius: $borderRadiusTwo;
         cursor: pointer;
+        font-size: 1.8rem;
 
-        @media (min-width: 1024px) {
+        @media (min-width: $minWidthDesktop) {
           flex-grow: 0;
-          height: 200px;
-          width: 300px;
+          height: 20rem;
+          width: 30rem;
         }
       }
 
       .box-wrapper {
-        display: flex;
-        flex-direction: column;
+        @include display-flex-column;
         flex-grow: 1;
 
-        @media (min-width: 1024px) {
+        @media (min-width: $minWidthDesktop) {
           flex-grow: 0;
         }
       }
 
       .section-1{
         .things-to-do {
-          background-color: #beefed;
+          background-color: $thingsToDoColor;
         }
 
         .beaches {
-          background-color: #feaebf;
+          background-color: $beachesColor;
         }
       }
 
       .section-2 {
         .food-drink {
-          background-color: #aebeef;
+          background-color: $foodDrinkColor;
         }
 
         .accommodation {
-          background-color: #fedfb3;
+          background-color: $accommodationColor;
         }
       }
     }
