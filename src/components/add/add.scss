@@ -1,16 +1,55 @@
+@import '../../_mixins.scss';
+@import '../../variables.scss';
+
 .wrapper {
   display: flex;
-  align-self: flex-end;
+  justify-content: center;
+  width: 100%;
+  border-radius: $borderRadiusTwo;
+  background-color: $buttonUnactiveColor;
+
+  &:active {
+    background: $buttonActiveColor;
+  }
+
+  @media (min-width: $minWidthDesktop) {
+    align-self: flex-end;
+    width: auto;
+    background-color: transparent;
+    margin-top: 1rem;
+
+    &:active {
+      background: transparent;
+    }
+  }
 
   a {
     display: flex;
-    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: black;
+    color: $textColor;
+    width: 100%;
 
     .plus {
-      padding-right: 10px;
-      width: 31px;
+      display: none;
+
+      @media (min-width: $minWidthDesktop) {
+        display: inline-block;
+        padding-right: 1rem;
+        width: 3.1rem;
+      }
+    }
+
+    p {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      margin: 0;
+      padding: 1.1rem;
+
+      @media (min-width: $minWidthDesktop) {
+        font-size: 1.8rem;
+        text-transform: none;
+      }
     }
   }
 }

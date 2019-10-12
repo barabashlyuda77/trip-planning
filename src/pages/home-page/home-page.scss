@@ -1,14 +1,17 @@
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px;
+@import '../../_mixins.scss';
+@import '../../variables.scss';
 
-  @media (min-width: 768px) {
-    padding: 50px;
+.home {
+  @include display-flex-column;
+  align-items: center;
+  padding: 2.5rem;
+  height: 100%;
+
+  @media (min-width: $minWidthTablet) {
+    padding: 5rem;
   }
 
-  @media (min-width: 1200px) {
-    padding: 100px;
+  @media (min-width: $minWidthDesktop) {
+    padding: 10rem;
   }
 }
