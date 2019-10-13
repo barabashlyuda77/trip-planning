@@ -9,7 +9,7 @@ const tripList = (props) => {
       {props.dataFromDb.map((trip) =>
         {
           return <Link to={`/trip-details/${trip.id}/`} key={trip.city}>
-            {trip.city},{trip.country}
+            {trip.city}, {trip.country}
           </Link>
         }
       )}
