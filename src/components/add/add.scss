@@ -31,25 +31,36 @@
     color: $textColor;
     width: 100%;
 
+    @media (min-width: $minWidthDesktop) {
+      &:hover {
+        background-color: $buttonHoverColorGrey;
+        border-radius: 0.4rem;
+      }
+
+      &:active {
+        background-color: $buttonActiveColorGrey;
+      }
+    }
+
     .plus {
       display: none;
 
       @media (min-width: $minWidthDesktop) {
         display: inline-block;
-        padding-right: 1rem;
-        width: 3.1rem;
+        width: 4rem;
       }
     }
 
-    p {
+    .add-button-text {
       text-transform: uppercase;
       font-size: 1.2rem;
       margin: 0;
       padding: 1.1rem;
 
       @media (min-width: $minWidthDesktop) {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
         text-transform: none;
+        padding: 1.1rem 0 1.1rem 1.1rem;
       }
     }
   }

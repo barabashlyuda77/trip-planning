@@ -12,7 +12,7 @@ const add = () => {
           alt="add trip"
           src="https://img.icons8.com/material/24/000000/plus-math.png"
         />
-        <p>add new trip</p>
+        <p className="add-button-text">add new trip</p>
       </Link>
     </div>
   );

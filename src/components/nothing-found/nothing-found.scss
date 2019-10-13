@@ -11,11 +11,15 @@
     font-size: 2.5rem;
 
     @media (min-width: $minWidthDesktop) {
-      font-size: 3rem;
+      font-size: 4rem;
     }
   }
 
   p {
     font-size: 1.2rem;
+
+    @media (min-width: $minWidthDesktop) {
+      font-size: 2rem;
+    }
   }
 }

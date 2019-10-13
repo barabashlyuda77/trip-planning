@@ -1,13 +1,20 @@
+@import '../../_mixins.scss';
+@import '../../variables.scss';
+
 form {
   width: 100%;
 
   input {
-    border-radius: 3px;
-    font-size: 17px;
-    padding: 10px 10px;
+    border-radius: 0.3rem;
+    font-size: 1.7rem;
+    padding: 1rem;
     width: 100%;
-    border: 1px solid grey;
-    outline-color: grey;
+    border: 0.1rem solid $borderColorDark;
+    outline-color: $borderColorDark;
     outline-width: thin;
+
+    @media (min-width: $minWidthDesktop) {
+      font-size: 2.8rem;
+    }
   }
 }

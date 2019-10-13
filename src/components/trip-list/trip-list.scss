@@ -17,5 +17,9 @@
     color: $textColor;
     margin-bottom: 1rem;
     font-size: 1.8rem;
+
+    @media (min-width: $minWidthDesktop) {
+      font-size: 2.4rem;
+    }
   }
 }
