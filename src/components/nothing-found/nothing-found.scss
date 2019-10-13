@@ -1,9 +1,21 @@
+@import '../../_mixins.scss';
+@import '../../variables.scss';
+
 .nothingFound {
-  display: flex;
-  flex-direction: column;
+  @include display-flex-column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 
   h1 {
-    font-size: 30px;
+    font-size: 2.5rem;
+
+    @media (min-width: $minWidthDesktop) {
+      font-size: 3rem;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
   }
 }
