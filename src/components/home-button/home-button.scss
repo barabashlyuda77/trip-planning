@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .home-wrapper {
 
   a {
@@ -6,20 +8,24 @@
     cursor: pointer;
     position: relative;
     text-decoration: none;
-    color: black;
+    color: $textColor;
 
     img {
-      width: 30px;
-      height: 30px;
-      margin-right: 5px;
+      width: 3rem;
+      height: 3rem;
+      margin-right: 0.5rem;
     }
 
     p {
       margin: 0;
       text-transform: uppercase;
       position: relative;
-      top: 3px;
+      top: 0.3rem;
       font-size: 1.6rem;
+
+      @media (min-width: $minWidthDesktop) {
+        font-size: 2rem;
+      }
     }
   }
 }
