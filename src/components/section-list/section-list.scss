@@ -1,26 +1,46 @@
+@import '../../variables.scss';
+@import '../../_mixins.scss';
+
 .section-list-wrapper {
-  width: 750px;
+  width: 100%;
+  margin-top: 1rem;
+
+  @media (min-width: $minWidthTablet) {
+    width: 75rem;
+  }
 
   .item-wrapper {
     display: flex;
     align-items: center;
-    border-bottom: 1px dotted #ccc;
+    border-bottom: 0.1rem dotted $borderColor;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 
     .text-wrapper {
+      margin-right: 1.5rem;
 
+      @media (min-width: $minWidthTablet) {
+        margin-right: 0;
+      }
       h4, p {
         margin: 0 0 10px 0;
       }
 
+      h4 {
+        font-size: 2rem;
+      }
+
       p {
-        width: 690px;
+        font-size: 1.6rem;
+
+        @media (min-width: $minWidthTablet) {
+          width: 69rem;
+        }
       }
 
       .read-more, .read-less, .dots {
         color: #170aa9;
-        font-size: 14px;
+        font-size: 1.4rem;
 
         &:hover {
           color: #369;

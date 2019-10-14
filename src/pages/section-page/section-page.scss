@@ -1,64 +1,90 @@
+@import '../../variables.scss';
+@import '../../_mixins.scss';
+
 .component-wrapper {
-  padding: 30px;
+  padding: 2rem;
+  width: 100%;
 
   .section-wrapper {
-    display: flex;
-    flex-direction: column;
+    @include display-flex-column;
     align-items: center;
-    margin: 20px auto;
+    width: 100%;
+    margin-top: 1.5rem;
+
+    @media (min-width: $minWidthTablet) {
+      margin: 2rem auto;
+    }
 
     h1 {
       display: inline-block;
       margin: 0;
-      font-size: 20px;
+      font-size: 2.5rem;
+
+      @media (min-width: $minWidthTablet) {
+        font-size: 2rem;
+      }
     }
 
     .form-wrapper {
-      margin: 20px 0;
+      margin: 1rem 0;
+      width: 100%;
 
       form {
-        display: flex;
+        @include display-flex-column;
+
+        @media (min-width: $minWidthTablet) {
+          flex-direction: row;
+        }
 
         input {
           outline: none;
-          height: 45px;
+          height: 4.5rem;
+          width: 100%;
+          font-size: 2rem;
         }
 
         .input-wrapper {
-          display: flex;
-          flex-direction: column;
-
+          @include display-flex-column;
         }
 
         .input-info{
           display: inline-block;
-          border: 1px solid #ccc;
-          margin-bottom: 10px;
+          border: 0.1rem solid $borderColor;
+          margin-bottom: 1.5rem;
+          width: 100%;
 
           &.is-invalid {
-            border-color: red;
+            border-color: $borderColorRed;
             outline: none;
           }
 
           &:focus {
-            border-color: #8d8d8d;
+            border-color: $borderColorFocus;
           }
         }
 
         .name {
-          width: 250px;
-          margin-right: 20px;
+          @media (min-width: $minWidthTablet) {
+            width: 25rem;
+            margin-right: 2rem;
+          }
         }
 
         .details {
-          width: 400px;
-          overflow: auto;
+          @media (min-width: $minWidthTablet) {
+            width: 40rem;
+            overflow: auto;
+          }
         }
 
         .invalid-feedback {
-          color: red;
-          margin: 0;
-          font-size: 12px;
+          color: $textColorRed;
+          margin-bottom: 0.8rem;
+          font-size: 1.5rem;
+
+          @media (min-width: $minWidthTablet) {
+            margin: 0;
+          }
         }
 
         .notification-added {
@@ -67,15 +93,18 @@
 
         .add-button {
           cursor: pointer;
-          background-color: #170aa9;
-          color: white;
+          background-color: $buttonUnactiveColor;
+          color: $textColorWhite;
           border-style: none;
           width: auto;
-          padding: 10px 15px;
-          margin-left: 20px;
+          padding: 1rem 1.5rem;
 
-          &:hover {
-            background-color: #093a86;
+          @media (min-width: $minWidthTablet) {
+            margin-left: 2rem;
+
+            &:hover {
+              background-color: $buttonHoverColor;
+            }
           }
         }
       }

@@ -132,6 +132,9 @@ class tripDetails extends Component {
           <div className="form-wrapper">
             <form>
               <div className="input-wrapper">
+                <div className='invalid-feedback'>
+                  {this.state.inputNameError}
+                </div>
                 <input
                   className={`name input-info ${this.state.inputNameError ? 'is-invalid' : ''}`}
                   type="text"
@@ -139,9 +142,11 @@ class tripDetails extends Component {
                   value={this.state.name}
                   onChange={this.handerChangeName}
                 />
-                <div className='invalid-feedback'>{this.state.inputNameError}</div>
               </div>
               <div className="input-wrapper">
+                <div className='invalid-feedback'>
+                  {this.state.inputDetailsError}
+                </div>
                 <input
                   className={`details input-info ${this.state.inputDetailsError ? 'is-invalid' : ''}`}
                   type="text"
@@ -149,7 +154,6 @@ class tripDetails extends Component {
                   value={this.state.details}
                   onChange={this.handerChangeDetails}
                 />
-                <div className='invalid-feedback'>{this.state.inputDetailsError}</div>
               </div>
               <ReactNotification
                 types={[{
