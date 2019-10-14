@@ -1,59 +1,84 @@
+@import '../../variables.scss';
+
 .wrapper-box {
-  padding: 100px;
+  padding: 0;
+
+  @media (min-width: $minWidthDesktop) {
+    padding: 10rem;
+  }
 
   h2 {
-    margin-top: 0;
-    font-size: 20px;
+    margin: 2rem 0;
+    font-size: 2.1rem;
     text-align: center;
+
+    @media (min-width: $minWidthDesktop) {
+      margin-top: 0;
+      font-size: 2.8rem;
+    }
   }
   form {
     label {
       display: inline-block;
-      margin: 10px 0 10px 0;
+      margin: 1rem 0;
+      font-size: 1.4rem;
+
+      @media (min-width: $minWidthDesktop) {
+        font-size: 1.8rem;
+      }
     }
 
     .form-control {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+
+      @media (min-width: $minWidthDesktop) {
+        font-size: 2.4rem;
+      }
 
       &.is-invalid {
-        border-color: red;
+        border-color: $textColorRed;
         outline: none;
       }
     }
 
     .invalid-feedback {
-      color: red;
+      color: $textColorRed;
       margin: 0;
-      font-size: 12px;
+      font-size: 1.2rem;
     }
 
     div {
       display: flex;
       justify-content: flex-end;
-      margin-top: 10px;
+      margin-top: 1rem;
 
       input {
-        width: 100px;
+        width: 10rem;
         cursor: pointer;
         outline: none;
+
+        @media (min-width: $minWidthDesktop) {
+          font-size: 2rem;
+        }
       }
 
       .submit-button {
-        color: white;
-        background-color: #170aa9;
+        color: $buttonWhiteColor;
+        background-color: $buttonUnactiveColor;
 
         &:hover {
-          background-color: #180689;
+          background-color: $buttonHoverColor;
         }
       }
 
       .notification-added {
-        background-color: #170aa9;
+        background-color: $buttonUnactiveColor;
       }
 
       .cancel-button {
         border: none;
-        color: #170aa9;
+        color: $buttonUnactiveColor;
       }
     }
   }
