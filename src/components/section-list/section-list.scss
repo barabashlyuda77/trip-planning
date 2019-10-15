@@ -23,7 +23,7 @@
         margin-right: 0;
       }
       h4, p {
-        margin: 0 0 10px 0;
+        margin: 0 0 1rem 0;
       }
 
       h4 {
@@ -54,20 +54,20 @@
   }
 
   .img-delete {
-    width: 17px;
+    width: 1.7rem;
     height: auto;
     position: absolute;
     right: 0;
     cursor: pointer;
 
     &:hover {
-      border: 1px dotted #ccc;
-      border-radius: 2px;
+      border: 0.1rem dotted $borderColor;
+      border-radius: $borderRadiusTwo;
     }
 
     &:active {
-      background-color: #ccc;
-      border-radius: 2px;
+      background-color: $borderColor;
+      border-radius: $borderRadiusTwo;
     }
   }
 }

@@ -5,6 +5,10 @@
   padding: 2rem;
   width: 100%;
 
+  @media (min-width: $minWidthTablet) {
+    padding: 2rem 4rem;
+  }
+
   .section-wrapper {
     @include display-flex-column;
     align-items: center;
@@ -21,13 +25,18 @@
       font-size: 2.5rem;
 
       @media (min-width: $minWidthTablet) {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
 
     .form-wrapper {
       margin: 1rem 0;
       width: 100%;
+
+      @media (min-width: $minWidthTablet) {
+        width: auto;
+        margin: 2.5rem 0;
+      }
 
       form {
         @include display-flex-column;
