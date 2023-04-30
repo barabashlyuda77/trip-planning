@@ -10,7 +10,7 @@
     "react-dom": "^16.8.5",
     "react-notifications-component": "^1.1.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "redux": "^4.0.4",
     "serve": "^11.2.0"
   },
